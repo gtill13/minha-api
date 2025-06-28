@@ -1,14 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HealthController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/health', function () {
-    $i = 0;
- 
-    return dd('API esta saudável');
+route::controller(HealthController::class)->group(function () {
+    route::get('/health', 'get');
 });

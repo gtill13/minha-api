@@ -14,11 +14,14 @@ services:
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+            # XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=192.168.1.14}'
+            # XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+            XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003" # Adicione esta linha
+            XDEBUG_MODE: "${APP_DEBUG_MODE:-debug}" # Adicione esta linha (pode ser "debug" ou "off")
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
         volumes:
             - '.:/var/www/html'
+            - './xdebug.ini:/etc/php/8.4/conf.d/xdebug.ini' # Adicione esta linha para montar o xdebug.ini
         networks:
             - sail
         depends_on:
