@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-route::controller(TestController::class)->middleware('auth:sanctum')->group(function () {
-    route::get('/test', 'test');
+route::middleware('auth:sanctum')->group(function () {
+    route::controller(TestController::class)->group(function () {
+        route::get('/test', 'test');
+    });
 });
+

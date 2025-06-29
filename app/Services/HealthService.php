@@ -2,10 +2,15 @@
 
 namespace App\Services;
 
+use App\Traits\HttpResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 class HealthService
 {
-    public function health(): string 
+    use HttpResponse;
+
+    public function health(): JsonResponse 
     {
-        return 'API esta saudável';
+        return $this->success('API esta saudável');
     }
 }
