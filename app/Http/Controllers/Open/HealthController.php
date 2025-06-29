@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Open;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Services\HealthService;
 
 class HealthController extends Controller
 {
-    public function get() {
+    public function get(): array {
         // xdebug_break();
         $service = new HealthService();
 
-        return $service->get();
+        return ['data' => $service->get()];
     }
 }

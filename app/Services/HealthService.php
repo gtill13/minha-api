@@ -6,6 +6,6 @@ class HealthService
 {
     public function get(): string 
     {
-        return dd('API esta saudável');
+        return 'API esta saudável';
     }
 }
