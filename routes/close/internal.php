@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-// route::controller(HealthController::class)->group(function () {
-//     route::get('/health', 'get');
-// });
+route::controller(TestController::class)->middleware('auth:sanctum')->group(function () {
+    route::get('/test', 'test');
+});

@@ -4,7 +4,7 @@ namespace App\Services;
 
 class HealthService
 {
-    public function get(): string 
+    public function health(): string 
     {
         return 'API esta saudável';
     }

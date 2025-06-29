@@ -7,10 +7,10 @@ use App\Services\HealthService;
 
 class HealthController extends Controller
 {
-    public function get(): array {
+    public function health(): array {
         // xdebug_break();
         $service = new HealthService();
 
-        return ['data' => $service->get()];
+        return ['data' => $service->health()];
     }
 }
