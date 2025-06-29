@@ -20,7 +20,7 @@ class AuthService
                 'Acesso autorizado',
                 Response::HTTP_OK,
                 [
-                    'access_token' => Auth::user()->createToken('invoice')->plainTextToken,
+                    'access_token' => Auth::user()->createToken('minha-api')->plainTextToken,
                 ]
             );
         }

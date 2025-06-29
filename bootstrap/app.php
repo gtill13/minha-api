@@ -6,7 +6,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Auth\AuthenticationException;
 use App\Traits\HttpResponse;
 use Symfony\Component\HttpFoundation\Response;
-
+use Illuminate\Console\Scheduling\Schedule;
 
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -27,4 +27,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 );
             }
         });
-    })->create();
+    })
+    ->withSchedule(function (Schedule $schedule) {
+        $schedule->command('sanctum:prune-expired --hours=24')->daily();
+    })
+    ->create();
